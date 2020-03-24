@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><note xmlns="http://www.lotus.com/dxl" class="form" replicaid="8625852B00464A97" version="11.0">
+<noteinfo noteid="196" sequence="1" unid="EFDCE57028A5179686258531005E443E">
+<created><datetime>20200320T110938,54-06</datetime></created>
+<modified><datetime>20200320T111000,95-06</datetime></modified>
+<revised><datetime>20200320T111000,94-06</datetime></revised>
+<lastaccessed><datetime>20200320T111000,94-06</datetime></lastaccessed>
+<addedtofile><datetime>20200320T111000,94-06</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=Javier Sanchez Oliva/O=data101</name></updatedby>
+<wassignedby><name>CN=Javier Sanchez Oliva/O=data101</name></wassignedby>
+<item name="$TITLE"><text>virus.png</text></item>
+<item name="$Flags"><text>34CiQ</text></item>
+<item name="$FlagsExt"><text>D</text></item>
+<item name="$ImagesWide" sign="true"><number>1</number></item>
+<item name="$ImagesHigh" sign="true"><number>1</number></item>
+<item name="$ImagesColorize" sign="true"><number>0</number></item>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<item name="$MimeType" sign="true"><text>image/png</text></item>
+<item name="$FileModDT" sign="true"><datetime>20200320T180915,16+01</datetime></item>
+<item name="$ImageNames" sign="true"><text>virus.png</text></item>
+<item name="$DesignerVersion"><text>8.5.3</text></item></note>

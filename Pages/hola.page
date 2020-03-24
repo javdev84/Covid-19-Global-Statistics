@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='utf-8'?>
+<note class='form' xmlns='http://www.lotus.com/dxl' version='11.0' replicaid='8625852B00464A97'>
+<noteinfo noteid='166' unid='C076BB50A59AEE9C8625852B00465EC2' sequence='4'>
+<created><datetime>20200314T064837,78-06</datetime></created>
+<modified><datetime>20200314T163950,60-06</datetime></modified>
+<revised><datetime>20200314T163950,58-06</datetime></revised>
+<lastaccessed><datetime>20200314T163950,58-06</datetime></lastaccessed>
+<addedtofile><datetime>20200314T064838,77-06</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=Javier Sanchez Oliva/O=data101</name></updatedby>
+<wassignedby><name>CN=Javier Sanchez Oliva/O=data101</name></wassignedby>
+<item name='$Comment' sign='true'><text/></item>
+<item name='$HTMLCode' sign='true'>
+<rawitemdata type='1'>
+X/8QAAIADwAHAAAAAAAAAA==
+</rawitemdata></item>
+<item name='$TITLE'><text>hola</text></item>
+<item name='$Info' sign='true'>
+<rawitemdata type='1'>
+hhgBAIAAAAAAgAAAAQABAP///wAQAAAA
+</rawitemdata></item>
+<item name='$Flags'><text>C34WQ</text></item>
+<item name='$DesignerVersion'><text>8.5.3</text></item>
+<item name='$$ScriptName' summary='false' sign='true'><text>hola</text></item>
+<item name='$Body' sign='true'>
+<rawitemdata type='1'>
+gQKC/1oAAQAAAAAAAAAAAKAFAACgBQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAABAAAAAJSHAAAAAAAAAAAAAAAAAQAAAAQAAACDBAEAhf8MAAEAAApIb2xpgQKDBAEA
+hf8IAAEAAArdBgEAc/9z/xoAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAPb/KwAAAAAAAwAiAAkAAAAA
+AAAAAAAAAAAAAAAAAAAAAABob2xhLmh0bWwA3gYBAHP/hf8IAAEAAArdBgEAc/9z/xoAAAACAAAA
+AAAAAAAAAAAAAAAAAAAAAPb/KgAAAAAAAwAhAAgAAAAAAAAAAAAAAAAAAAAAAAAAAABob2xhLmNz
+c94GAQBz/4X/CAABAAAK
+</rawitemdata></item></note>
+

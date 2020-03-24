@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><note xmlns="http://www.lotus.com/dxl" class="filter" replicaid="8625852B00464A97" version="11.0">
+<noteinfo noteid="17a" sequence="129" unid="FACDB08811BC88CC8625852B004830C9">
+<created><datetime>20200314T070830,81-06</datetime></created>
+<modified><datetime>20200324T035804,79-06</datetime></modified>
+<revised><datetime>20200324T035804,78-06</datetime></revised>
+<lastaccessed><datetime>20200324T035804,78-06</datetime></lastaccessed>
+<addedtofile><datetime>20200314T070831,18-06</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=Javier Sanchez Oliva/O=data101</name></updatedby>
+<wassignedby><name>CN=Javier Sanchez Oliva/O=data101</name></wassignedby>
+<item name="$TITLE" sign="true"><text>APIJSON</text></item>
+<item name="$Flags"><text>s34Q</text></item>
+<item name="$PublicAccess" sign="true"><text>1</text></item>
+<item name="$DesignerVersion"><text>8.5.3</text></item>
+
+</note>

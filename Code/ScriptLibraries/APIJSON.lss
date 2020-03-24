@@ -1,0 +1,226 @@
+'++LotusScript Development Environment:2:5:(Options):0:74
+%REM
+	Library APIJSON
+	Created Mar 14, 2020 by Javier Sanchez Oliva/data101
+	Description: Handles the covid19.mathdro.id API
+%END REM
+Option Public
+Option Declare
+
+
+
+
+'++LotusScript Development Environment:2:5:(Forward):0:1
+Declare Public Function GetCountries() As Variant
+Declare Public Function GetCountryByCoords() As String
+Declare Public Sub GetStatisticsByCountry(Country As String, stats As Statistics) 
+
+'++LotusScript Development Environment:2:5:(Declarations):0:10
+'-	URLS 
+Private Const API_DATA_BASE	=	"https://covid19.mathdro.id/api/"
+Private Const API_GEOCODING_BASE	= "https://geocode.xyz/"
+
+%REM
+	Type Statistics
+	Description: Data Transport Object
+%END REM
+Type Statistics
+	cases As Long
+	recovered As Long
+	deaths As Long
+	lastUpdate As String
+End Type
+
+'++LotusScript Development Environment:2:1:GetCountries:5:8
+%REM
+	Function GetCountries
+	Description: all countries and their ISO codes in Combo format laber | code
+%END REM
+Public Function GetCountries() As Variant
+	
+	Dim s As New NotesSession        
+    Dim ret As String
+    Dim URL As String
+ 
+    Dim user As String
+    Dim password As String
+     
+	Dim httpReq As NotesHTTPRequest
+	Set httpReq = s.CreateHttpRequest()
+	
+	httpReq.Preferstrings = True
+	
+		
+	URL = API_DATA_BASE & "countries"
+	
+	
+	Dim json As String
+	json = httpReq.Get(URL)
+			
+	Dim paises() As String		
+			
+	Dim jsonNav As NotesJSONNavigator
+	Set jsonNav = s.Createjsonnavigator(json)
+	
+	Dim el As NotesJSONElement	
+	Set el = jsonNav.Getelementbyname("countries")
+	
+	Dim countriesArray As NotesJSONArray
+	Set countriesArray = el.Value
+	
+	ReDim paises(countriesArray.Size) As String
+	 
+	Dim i As Integer, nameAux As String, valueAux As string
+	Dim countryObject As NotesJSONObject
+	Dim countryElement As NotesJSONElement
+	
+	Set el = countriesArray.Getfirstelement()
+	While Not el Is Nothing
+		Set countryObject = el.Value
+		If countryObject.Size > 2 Then
+			Set countryElement = countryObject.Getfirstelement()		
+			nameAux = countryElement.Value
+			Set countryElement = countryObject.Getnextelement()
+			valueAux = countryElement.Value
+			paises(i) = nameAux & "|" & valueAux
+			i=i+1	
+		End If
+		Set el = countriesArray.Getnextelement()
+	Wend
+	
+	GetCountries = paises	
+	
+End Function
+
+
+
+
+'++LotusScript Development Environment:2:1:GetCountryByCoords:5:8
+%REM
+	Function GetCountryByCoords
+	Description: acces to ARGIS 
+%END REM
+Public Function GetCountryByCoords() As String
+	
+	On Error GoTo HayError
+	
+	Dim s As New NotesSession
+	
+	Dim latt As Double 
+	Dim lott As Double 
+	
+	Dim gps As NotesGPS 
+	Set gps =  s.CreateGPS() 
+	
+	Dim hasAccess As Boolean 
+	hasAccess = GPS.Requestaccess() 
+	If hasAccess Then 
+		Dim pos As NotesGPSPosition 
+		Set pos = GPS.Getcurrentposition() 
+		Dim coo As NotesGPSCoordinates 
+		Set coo = pos.Coordinates 
+		
+		latt = coo.Latitude 
+		lott = coo.Longitude 
+		
+	End If 
+	
+	Dim httpReq As NotesHTTPRequest
+	Set httpReq = s.CreateHttpRequest()
+	
+	httpReq.Preferstrings = True
+	
+	Dim url As String
+	
+	
+	Dim strlat As String
+	strLat = Replace( Format$(latt, "#0.0######"), ",", ".")
+	Dim strLon As String
+	strLon = Replace( Format$(lott, "#0.0######"), ",", ".")
+	
+	
+	url = API_GEOCODING_BASE & strlat & "," & strLon & "?geoit=json"
+	
+	httpReq.Setheaderfield "content-type", "application/json"
+	
+	
+	Dim response As String
+	response = httpReq.get(Url)
+	
+	Dim nav As NotesJSONNavigator
+	Set nav = s.Createjsonnavigator(response)
+	
+	Dim el As NotesJSONElement
+	Set el = nav.Getelementbypointer("/country")
+	
+	GetCountryByCoords = el.Value
+	
+	Delete httpReq
+	
+	Exit Function
+HayError:	
+	If Err= 4508 Then
+		MsgBox "GPS is not available in your device"
+		Error Err, Error$
+	Else
+		MsgBox "Error: " & CStr(Err) & " " & Error$	
+	End If 
+
+	Exit Function
+End Function
+
+
+
+'++LotusScript Development Environment:2:2:GetStatisticsByCountry:5:8
+%REM
+	Function GetStatistics
+	Description: Comments for Function
+%END REM
+Public Sub GetStatisticsByCountry(Country As String, stats As Statistics) 
+	
+	
+	Dim s As New NotesSession        
+	Dim ret As String
+	Dim URL As String
+	
+	Dim user As String
+	Dim password As String
+	
+	Dim httpReq As NotesHTTPRequest
+	Set httpReq = s.CreateHttpRequest()
+	
+	httpReq.Preferstrings = True
+	
+	
+	URL = API_DATA_BASE & "countries/" & Country
+	
+	
+	Dim json As String
+	json = httpReq.Get(URL)
+	
+	Dim jsonNav As NotesJSONNavigator
+	Set jsonNav = s.Createjsonnavigator(json)
+	
+	Dim el As NotesJSONElement	
+	Set el = jsonNav.Getelementbyname("confirmed")
+	
+	Dim obj As NotesJSONObject
+	Set obj = el.Value
+	
+	Set el = obj.Getfirstelement()
+	stats.cases = el.Value
+	
+	Set el = jsonNav.Getelementbyname("recovered")
+	Set obj = el.Value
+	Set el = obj.Getfirstelement()
+	stats.recovered = el.Value
+	
+	Set el = jsonNav.Getelementbyname("deaths")
+	Set obj = el.Value
+	Set el = obj.Getfirstelement()
+	stats.deaths = el.Value
+	
+	Set el = jsonNav.Getelementbyname("lastUpdate")
+	stats.lastUpdate = el.Value
+	
+End Sub

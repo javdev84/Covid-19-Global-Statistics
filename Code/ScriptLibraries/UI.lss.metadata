@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><note xmlns="http://www.lotus.com/dxl" class="filter" replicaid="8625852B00464A97" version="11.0">
+<noteinfo noteid="1a6" sequence="7" unid="1EAD09C0094D88DF8625853100709787">
+<created><datetime>20200320T142948,23-06</datetime></created>
+<modified><datetime>20200320T144129,87-06</datetime></modified>
+<revised><datetime>20200320T144129,85-06</datetime></revised>
+<lastaccessed><datetime>20200320T144129,85-06</datetime></lastaccessed>
+<addedtofile><datetime>20200320T142948,84-06</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=Javier Sanchez Oliva/O=data101</name></updatedby>
+<wassignedby><name>CN=Javier Sanchez Oliva/O=data101</name></wassignedby>
+<item name="$TITLE" sign="true"><text>UI</text></item>
+<item name="$Flags"><text>s34Q</text></item>
+<item name="$PublicAccess" sign="true"><text>1</text></item>
+<item name="$DesignerVersion"><text>8.5.3</text></item>
+
+
+<item name="$Comment"><text>Interface functions</text></item></note>

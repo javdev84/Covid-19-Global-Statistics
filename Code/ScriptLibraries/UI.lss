@@ -1,0 +1,42 @@
+'++LotusScript Development Environment:2:5:(Options):0:74
+%REM
+	Library UI
+	Created Mar 20, 2020 by Javier Sanchez Oliva/data101
+	Description: Comments for Library
+%END REM
+Option Public
+Option Declare
+
+Use "APIJSON"
+
+
+'++LotusScript Development Environment:2:5:(Forward):0:1
+Declare Public Sub UIRefreshCountry(uidoc As NotesUIDocument, codCountry As String)
+
+'++LotusScript Development Environment:2:5:(Declarations):0:2
+
+'++LotusScript Development Environment:2:2:UIRefreshCountry:5:8
+%REM
+	Sub UIRefreshCountry
+	Description: Refresh the document with country change
+%END REM
+Public Sub UIRefreshCountry(uidoc As NotesUIDocument, codCountry As String)
+	
+	Dim stats As Statistics
+	
+	Dim curDoc As NotesDocument
+	Set curDoc = uidoc.Document
+	
+	curDoc.Cargando = 1
+	uidoc.RefreshHideFormulas
+	Call GetStatisticsByCountry(codCountry, stats)
+	curDoc.Casos = stats.cases
+	curDoc.Recuperaciones = stats.recovered
+	curDoc.Muertes = stats.deaths
+	Dim ndtAux As New NotesDateTime(stats.lastUpdate)
+	curDoc.ReplaceItemValue "DateRetrieved", ndtAux
+	curDoc.Cargando = 0
+	uidoc.Refresh
+	
+End Sub
+
